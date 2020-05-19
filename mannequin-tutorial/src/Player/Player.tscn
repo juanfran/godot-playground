@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Player/Mannequiny.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/Player/Move.gd" type="Script" id=3]
+[ext_resource path="res://src/Main/StateMachine/StateMachine.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.25
+height = 1.25
+
+[node name="Player" type="KinematicBody"]
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.891647, 0 )
+shape = SubResource( 1 )
+
+[node name="Mannequiny" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.999972, 0, 0.00745233, 0, 1, 0, -0.00745233, 0, -0.999972, 0, 0, 0 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 4 )
+intial_state = NodePath("Move")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
