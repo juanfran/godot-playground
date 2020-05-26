@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Level/Playground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/3d/level/level_environment.tres" type="Environment" id=3]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Camera
 
 func _process(delta: float) -> void:
@@ -13,10 +13,10 @@ func _process(delta: float) -> void:
     )
 "
 
-[sub_resource type="PlaneMesh" id=1]
+[sub_resource type="PlaneMesh" id=2]
 size = Vector2( 50, 50 )
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 25, 1, 25 )
 
 [node name="Game" type="Node"]
@@ -24,7 +24,7 @@ extents = Vector3( 25, 1, 25 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.843138, 0.537697, 0, -0.537697, 0.843138, 0, 4.33542, 5.33835 )
 current = true
-script = SubResource( 3 )
+script = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -32,7 +32,7 @@ script = SubResource( 3 )
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, -9.07878 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MeshInstance"]
@@ -41,7 +41,7 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.681996, -0.341001, -0.646993, 0.608662, -0.225824, 0.760614, -0.405477, -0.912536, 0.0535432, -3.71127, 6.25289, 0 )
